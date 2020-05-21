@@ -1,0 +1,57 @@
+#right{
+    background-color:rgba(19, 67, 83, 0.829);
+    border:1px solid black;
+    font-size: xx-large;
+    text-align: center;
+}
+#map{
+    background-color:rgb(184, 135, 0);
+
+}
+#geo{
+    background-color:rgb(184, 135, 0);
+
+}
+#GPS{
+    background-color:rgb(184, 135, 0);
+}
+#Współrzędne{
+    background-color:rgb(184, 135, 0);
+}
+#pic {
+    text-align: center;
+}
+.menu-context {
+    position: absolute;
+    left:-9999px;
+    top:-9999px;
+    background: #222;
+    color:#fff;
+    list-style:none;
+    padding:0;
+    margin:0;
+    width:300px;
+    padding:10px;
+    border-radius: 4px;
+    box-shadow:0 2px 4px rgba(0,0,0,0.3);
+    font-size:13px;
+    font-weight: bold;
+}
+.menu-context li {
+    border-bottom:1px solid #444;
+    cursor: pointer;
+}
+.menu-context li a {
+    color:#fff;
+    text-decoration: none;
+    padding:5px 10px;
+    display: block;
+    transition:0.5s all;
+}
+.menu-context li a:hover {
+    background: #F15C5C;
+    color:#fff;
+}
+.menu-context li:last-child {
+    border:0;
+}
