@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header id="navbar">
+        <img id="icon" src="css/images/nav-icon.png">
+    </header>
+    <nav>
+        <ul class="menu-context">
+            <li><a href="Map.html" id="map">Mapa Google </a></li>
+            <li><a onclick="getLocation()" id="geo">Geolokalizacja</a></li>
+            <li><a href="https://pl.wikipedia.org/wiki/Global_Positioning_System">Historia GPS</a></li>
+            <li><a href="https://www.wspolrzedne.pl/">Sprawdź współrzędne na mapie</a></li>
+        </ul>
+    </nav>
+    </br></br></br></br></br></br>
+    <main>
+        <div id="position">
+            
+        </div>
+       
+    </main>
+    <script>
+        const menu = document.querySelector('.menu-context');
+        
+        function menuClick(e) {
+            e.preventDefault();
+
+            if (e.button === 0) {
+                menu.style.left = e.pageX + 10 + 'px';
+                menu.style.top = e.pageY + 10 + 'px'; 
+            }
+        }
+
+        const navbar = document.querySelector('#navbar');
+        navbar.addEventListener('mousedown', menuClick);
+
+        navbar.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        const item1 = document.querySelector('#map');
+        item1.addEventListener('mousedown');
+        const item2 = document.querySelector('#geo');
+        item1.addEventListener('mousedown');
+            
+    </script>
+
+    <script>
+        var x = document.getElementById("position");
+
+        function getLocation() {
+            if (navigator.geolocation) 
+                navigator.geolocation.getCurrentPosition(showPosition);
+            else 
+                x.innerHTML = "Geolocation is not supported by this browser.";      
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Szerokość geograficzna: " + position.coords.latitude + 
+                "<br> Długość geograficzna: " + position.coords.longitude;
+        }
+    </script>
+</body>
+</html>
