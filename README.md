@@ -1,5 +1,5 @@
 # Context Menu Navbar
 * Usage of Javascript <br/>
 * Google Maps, geolocation<br/><br/>
-![picture](https://github.com/KarolinaLewinska/Context_Menu/blob/master/screenshot.PNG)<br/>
+![picture](https://github.com/KarolinaLewinska/ContextMenu_JS/blob/master/ReadmeIMG/screenshot.PNG)<br/>
 
