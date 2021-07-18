@@ -16,12 +16,6 @@ header {
     color:white;
 }
 
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
 #icon {
     width: 55px;
     height: 60px;
@@ -48,11 +42,11 @@ header {
 .menu-context li a {
     color:#fff;
     text-decoration: none;
-    padding: 5px 10px;
+    padding: 5px;
     display: block;   
     font-size: larger; 
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial;
 }
 
 .menu-context li a:hover {
@@ -60,10 +54,11 @@ header {
     color:#fff;
 }
 
-#position {
+#coordinates {
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 100px;
+    font-family: Arial;
+    margin-top: 30px;
+    position: fixed;
     margin-left: 100px;
     color: gray;
 }

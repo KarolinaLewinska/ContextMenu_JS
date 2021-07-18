@@ -2,14 +2,12 @@
 <html lang="pl">
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Menu</title>
         <link rel="stylesheet" href="css/style.css">
-        <script src="script.js"></script>
     </head>
     <body>
-        <header id="navbar">
+        <header id="header">
             <div class="row">
                 <div class="column"><img id="icon" src="css/images/nav-icon.png"></div>
                 <div class="column"><h4>MENU NAWIGACYJNE</h4></div>
@@ -20,12 +18,12 @@
                 <li><a onClick="showMap()" id="map">Mapa</a></li>
                 <li><a onclick="getLocation()" id="geo">Geolokalizacja</a></li>
                 <li><a href="https://pl.wikipedia.org/wiki/Global_Positioning_System">Historia GPS</a></li>
-                <li><a href="https://www.wspolrzedne.pl/">Sprawdź współrzędne na mapie</a></li>
+                <li><a href="https://www.wspolrzedne.pl/">Sprawdź współrzędne</a></li>
             </ul>
         </nav>
         <main>
             <div id="googleMap"></div>
-            <div id="position"></div>
+            <div id="coordinates"></div>
         </main>
         <footer>
             <div class="container text-center">
@@ -35,52 +33,49 @@
     </body>
 </html>
 <script>
-    const navbar = document.querySelector('#navbar');
+    const header = document.querySelector('#header');
     const menu = document.querySelector('.menu-context');
     const map = document.querySelector('#map');
     const geolocation = document.querySelector('#geo');
 
-    navbar.addEventListener('mousedown', menuClick);
-    navbar.addEventListener('mouseover', removeMenu);
+    header.addEventListener('contextmenu', e => e.preventDefault());
+    header.addEventListener('mousedown', showMenu);
+    header.addEventListener('mouseover', removeMenu);
     map.addEventListener('mousedown');
     geolocation.addEventListener('mousedown');
     
-    navbar.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    });
-    
+    function showMenu(e) {
+        if (e.button === 0) {
+            menu.style.left = e.pageX + 15 + 'px';
+            menu.style.top = e.pageY + 15 + 'px'; 
+        }
+    } 
+
     function removeMenu() {
         menu.style.left = '-9999px';
         menu.style.top = '-9999px';
     }
-
-    function menuClick(e) {
-        if (e.button === 0) {
-            menu.style.left = e.pageX + 10 + 'px';
-            menu.style.top = e.pageY + 10 + 'px'; 
-        }
-    } 
 </script>
 <script>
-    var geo = document.getElementById('position');
+    var coordinates = document.getElementById('coordinates');
 
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         }
         else {
-            geo.innerHTML = 'Geolocation is not supported by this browser';      
+            coordinates.innerHTML = 'Geolocation is not supported by this browser';      
         }
     }
 
     function showPosition(position) {
-        geo.innerHTML = 'Szerokość geograficzna: ' + position.coords.latitude + 
+        coordinates.innerHTML = 'Szerokość geograficzna: ' + position.coords.latitude + 
             '<br> Długość geograficzna: ' + position.coords.longitude;
     }
 </script>
 <script>
     function showMap() {
         document.getElementById('googleMap')
-            .innerHTML = '<iframe id=\"googleMap\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2319.902764812881!2d18.57130761588026!3d54.44700308022441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fd0a8e7324335f%3A0x37fbde4065ff0f10!2sMolo%20w%20Sopocie!5e0!3m2!1spl!2spl!4v1589556209430!5m2!1spl!2spl\" width=\"400\" height=\"300\" frameborder=\"0\" style=\"border:0;\" aria-hidden=\"false\" tabindex=\"0\"></iframe>';
+            .innerHTML = '<iframe id=\"googleMap\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2319.902764812881!2d18.57130761588026!3d54.44700308022441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fd0a8e7324335f%3A0x37fbde4065ff0f10!2sMolo%20w%20Sopocie!5e0!3m2!1spl!2spl!4v1589556209430!5m2!1spl!2spl\" width=\"400\" height=\"300\"></iframe>';
     }
 </script>
